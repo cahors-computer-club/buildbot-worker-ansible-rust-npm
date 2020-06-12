@@ -7,7 +7,7 @@ RUN mkdir /rust && mkdir /cargo && chown buildbot:buildbot /rust /cargo
 
 RUN echo "(curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --no-modify-path) && rustup default nightly" > /install-rust.sh && chmod 755 /install-rust.sh
 
-RUN apt install -y python-pip
+RUN apt install -y python-pip libssl-dev
 
 RUN pip install --upgrade cffi && \
     pip install --upgrade ansible && \
