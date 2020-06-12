@@ -14,6 +14,8 @@ ENV RUSTUP_HOME=/rust
 ENV CARGO_HOME=/cargo
 ENV PATH=/cargo/bin:/rust/bin:$PATH
 
+RUN apt install -y python-pip
+
 RUN pip3 install --upgrade cffi && \
     pip3 install --upgrade ansible && \
     pip3 install --upgrade pycrypto pywinrm \
