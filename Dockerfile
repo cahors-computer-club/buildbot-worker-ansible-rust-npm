@@ -27,6 +27,8 @@ ENV PATH=/cargo/bin:/rust/bin:$PATH
 
 
 RUN /install-rust.sh && rustup component add clippy-preview
+RUN rustup toolchain install nightly-2020-06-01
+RUN rustup default nightly-2020-06-01
 # # Add debug
-# RUN rustc -V
-# RUN cargo install grcov
+RUN rustc -V
+RUN cargo install grcov
