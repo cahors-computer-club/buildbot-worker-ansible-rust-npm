@@ -11,9 +11,13 @@ RUN apt install -y python-pip
 
 RUN pip install --upgrade cffi && \
     pip install --upgrade ansible && \
-    pip install --upgrade pycrypto pywinrm \
+    pip install --upgrade pycrypto pywinrm && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
+
+RUN apt install -y python-software-properties && \
+    curl -sL https://deb.nodesource.com/setup_6.x | bash – && \
+    apt install -y nodejs
 
 USER buildbot
 WORKDIR /buildbot
