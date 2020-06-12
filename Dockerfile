@@ -15,8 +15,7 @@ RUN pip install --upgrade cffi && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
 
-RUN apt install -y python-software-properties && \
-    curl -sL https://deb.nodesource.com/setup_6.x | bash – && \
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash – && \
     apt install -y nodejs
 
 USER buildbot
