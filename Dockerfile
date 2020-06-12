@@ -15,7 +15,7 @@ RUN pip install --upgrade cffi && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt install -y nodejs
 
 USER buildbot
@@ -24,5 +24,9 @@ WORKDIR /buildbot
 ENV RUSTUP_HOME=/rust
 ENV CARGO_HOME=/cargo
 ENV PATH=/cargo/bin:/rust/bin:$PATH
- 
-RUN /install-rust.sh && rustup component add clippy-preview && cargo install grcov
+
+
+RUN /install-rust.sh && rustup component add clippy-preview
+# Add debug
+RUN rustc -V
+RUN cargo install grcov
