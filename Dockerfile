@@ -15,6 +15,7 @@ RUN pip install --upgrade cffi && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
 
+RUN apt install -y sudo
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - \
     apt install -y nodejs
 
