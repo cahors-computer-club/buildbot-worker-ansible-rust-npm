@@ -38,3 +38,4 @@ RUN rustup default nightly-2020-06-01
 # # Add debug
 RUN rustc -V
 RUN cargo install grcov
+RUN git lfs install
