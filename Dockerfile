@@ -12,6 +12,7 @@ RUN apt update -y && apt install -y python-pip libssl-dev libssl1.1 openssl pkg-
 RUN pip install --upgrade cffi && \
     pip install --upgrade ansible && \
     pip install --upgrade pycrypto pywinrm && \
+    pip install --upgrade hvac && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts
 
