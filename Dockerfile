@@ -7,7 +7,7 @@ RUN mkdir /rust && mkdir /cargo && chown buildbot:buildbot /rust /cargo
 
 RUN echo "(curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --no-modify-path) && rustup default nightly" > /install-rust.sh && chmod 755 /install-rust.sh
 
-RUN apt update -y && apt install -y python-pip libssl-dev libssl1.1 openssl pkg-config libsqlite3-0 libsqlite3-dev zip
+RUN apt update -y && apt install -y python-pip libssl-dev libssl1.1 openssl pkg-config libsqlite3-0 libsqlite3-dev zip wget 
 
 RUN pip install --upgrade cffi && \
     pip install --upgrade ansible && \
@@ -17,6 +17,11 @@ RUN pip install --upgrade cffi && \
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt install -y nodejs
+
+RUN cd /tmp ; wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip -O vault.zip && \
+	unzip vault.zip && \
+	mv vault /usr/bin/vault && \
+	chmod +x /usr/bin/vault
 
 USER buildbot
 WORKDIR /buildbot
