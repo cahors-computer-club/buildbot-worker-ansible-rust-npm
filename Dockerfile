@@ -39,3 +39,4 @@ RUN rustup toolchain install nightly-2020-06-01
 RUN rustup default nightly-2020-06-01
 # # Add debug
 RUN cargo install grcov
+RUN cargo install sccache
