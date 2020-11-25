@@ -8,7 +8,7 @@ RUN mkdir /rust && mkdir /cargo && chown buildbot:buildbot /rust /cargo
 RUN echo "(curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --no-modify-path) && rustup default nightly" > /install-rust.sh && chmod 755 /install-rust.sh
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-RUN apt update -y && apt install -y clang python-pip libssl-dev libssl1.1 openssl pkg-config libsqlite3-0 libsqlite3-dev zip wget git-lfs afl clang llvm
+RUN apt-add-repository --yes --update ppa:ansible/ansible && apt update -y && apt install -y clang python-pip libssl-dev libssl1.1 openssl pkg-config libsqlite3-0 libsqlite3-dev zip wget git-lfs afl clang llvm ansible
 
 RUN pip install --upgrade cffi && \
     pip install --upgrade ansible && \
