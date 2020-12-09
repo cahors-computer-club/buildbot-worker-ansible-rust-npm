@@ -24,12 +24,12 @@ RUN cd /tmp ; wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_
 	unzip vault.zip && \
 	mv vault /usr/bin/vault && \
 	chmod +x /usr/bin/vault
-	
-RUN ansible-galaxy collection install community.general
 
 USER buildbot
 WORKDIR /buildbot
 RUN git lfs install
+        
+RUN ansible-galaxy collection install community.general
  
 ENV RUSTUP_HOME=/rust
 ENV CARGO_HOME=/cargo
